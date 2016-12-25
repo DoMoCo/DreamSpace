@@ -1,0 +1,37 @@
+# Project: 会变形的方块
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = Block.o Frame.o Func.o Source.o
+LINKOBJ  = Block.o Frame.o Func.o Source.o
+LIBS     = -L"D:/Professional program/DEV-CPP/MinGW64/lib" -L"D:/Professional program/DEV-CPP/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc  -g -g3
+INCS     = -I"D:/Professional program/DEV-CPP/MinGW64/include" -I"D:/Professional program/DEV-CPP/MinGW64/x86_64-w64-mingw32/include" -I"D:/Professional program/DEV-CPP/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Professional program/DEV-CPP/MinGW64/include" -I"D:/Professional program/DEV-CPP/MinGW64/x86_64-w64-mingw32/include" -I"D:/Professional program/DEV-CPP/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Professional program/DEV-CPP/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 会变形的方块.exe
+CXXFLAGS = $(CXXINCS) -g3 -std=c++11  -g
+CFLAGS   = $(INCS) -g3 -std=c++11  -g
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Block.o: Block.cpp
+	$(CPP) -c Block.cpp -o Block.o $(CXXFLAGS)
+
+Frame.o: Frame.cpp
+	$(CPP) -c Frame.cpp -o Frame.o $(CXXFLAGS)
+
+Func.o: Func.cpp
+	$(CPP) -c Func.cpp -o Func.o $(CXXFLAGS)
+
+Source.o: Source.cpp
+	$(CPP) -c Source.cpp -o Source.o $(CXXFLAGS)
